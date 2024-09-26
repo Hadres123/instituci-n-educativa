@@ -8,49 +8,71 @@
     <script defer src="index.js"></script> 
 </head>
 <body>
-    <div class="container">
+   <div class="container">
         <h1>Sistema de Archivos para una Institución Educativa</h1>
-
+        
         <p>Este sistema de archivos está diseñado para organizar y gestionar la información académica y administrativa en una institución educativa. La estructura de archivos está dividida en tres áreas principales: <strong>Académica</strong>, <strong>Estudiantes</strong> y <strong>Administración</strong>.</p>
-
-        <h2>Estructura de Directorios <button id="toggleDirectories">Mostrar/Ocultar</button></h2>
-        <pre id="directories">
+        
+        <div class="section">
+            <h2>Estructura de Directorios</h2>
+            <button class="toggle-btn" id="toggleDirectories">Mostrar/Ocultar</button>
+            <div class="content" id="directoriesContent">
+                <pre>
 o /academic: Directorio para toda la información académica.
-     ▪ /academic/courses: Almacena los planes de estudio y materiales de cada curso.
-     ▪ /academic/courses/math101: Planes de estudio y materiales del curso Math 101.
-     ▪ /academic/courses/chemistry202: Planes de estudio y materiales del curso Chemistry 202.
-     ▪ /academic/students: Contiene carpetas individuales para cada estudiante.
-     ▪ /academic/students/2023: Año de ingreso.
-     ▪ /academic/students/2023/juan_perez: Documentos personales de Juan Pérez, estudiante del 2023.
-     ▪ /academic/students/2023/maria_lopez: Documentos personales de María López, estudiante del 2023.
-     ▪ /academic/students/2024: Año de ingreso.
-     ▪ /academic/faculty: Almacena la información de los docentes.  
-     ▪ /academic/faculty/jane_doe: Carpeta personal de la profesora Jane Doe.
-     ▪ /academic/faculty/john_smith: Carpeta personal del profesor John Smith.
-
-        <h2>Asignación de Permisos <button id="togglePermissions">Mostrar/Ocultar</button></h2>
-        <ul id="permissions">
-      o	Utilizar EXT4 o NTFS según el sistema operativo del servidor, para soportar una gestión eficiente de archivos y permisos.
-      o	Implementar un sistema de copia de seguridad automatizado, especialmente para los directorios /academic y /administration, dado el valor crítico de esta información.
-      o	Implementar cifrado en los directorios /administration/finance y /academic/students para proteger datos sensibles.
-        </ul>
-
-        <h3> Gestión de Permisos y Seguridad<button id="toggleCode">Mostrar/Ocultar</button></h3>
-        <div class="code" id="codeBlock">
-          Establecer permisos de lectura y escritura específicos:
-     ▪ Estudiantes: Solo lectura en /academic/courses y acceso a su propia carpeta en /academic/students.
-     ▪ Docentes: Lectura y escritura en /academic/courses y su carpeta en /academic/faculty.
-     ▪ Administración: Lectura y escritura en /administration.
-     ▪ Implementar un sistema de autenticación para controlar el acceso según los roles definidos (estudiante, docente, administrativo).
-     ▪ Establecer monitoreo de acceso para detectar y registrar intentos de acceso no autorizados, especialmente en los directorios de /administration. 
+    ▪ /academic/courses: Almacena los planes de estudio y materiales de cada curso.
+        ▪ /academic/courses/math101: Planes de estudio y materiales del curso Math 101.
+        ▪ /academic/courses/chemistry202: Planes de estudio y materiales del curso Chemistry 202.
+    ▪ /academic/students: Contiene carpetas individuales para cada estudiante.
+        ▪ /academic/students/2023: Año de ingreso.
+            ▪ /academic/students/2023/juan_perez: Documentos personales de Juan Pérez, estudiante del 2023.
+            ▪ /academic/students/2023/maria_lopez: Documentos personales de María López, estudiante del 2023.
+        ▪ /academic/students/2024: Año de ingreso.
+    ▪ /academic/faculty: Almacena la información de los docentes.  
+        ▪ /academic/faculty/jane_doe: Carpeta personal de la profesora Jane Doe.
+        ▪ /academic/faculty/john_smith: Carpeta personal del profesor John Smith.
+                </pre>
+            </div>
         </div>
-
-        <h2>Consideraciones de Almacenamiento:</h2>
-        <ul>
-            Implementar un sistema de almacenamiento en red (NAS) para permitir el acceso seguro y eficiente desde diferentes ubicaciones dentro del campus. 
-            Dividir los datos en discos duros separados para /academic y /administration, permitiendo un balanceo de carga y redundancia en caso de fallo.
-
-        </ul>
+        
+        <div class="section">
+            <h2>Asignación de Permisos</h2>
+            <button class="toggle-btn" id="togglePermissions">Mostrar/Ocultar</button>
+            <div class="content" id="permissionsContent">
+                <ul>
+                    <li>Utilizar EXT4 o NTFS según el sistema operativo del servidor, para soportar una gestión eficiente de archivos y permisos.</li>
+                    <li>Implementar un sistema de copia de seguridad automatizado, especialmente para los directorios /academic y /administration, dado el valor crítico de esta información.</li>
+                    <li>Implementar cifrado en los directorios /administration/finance y /academic/students para proteger datos sensibles.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Gestión de Permisos y Seguridad</h2>
+            <button class="toggle-btn" id="toggleSecurity">Mostrar/Ocultar</button>
+            <div class="content" id="securityContent">
+                <h3>Establecer permisos de lectura y escritura específicos:</h3>
+                <ul>
+                    <li>Estudiantes: Solo lectura en /academic/courses y acceso a su propia carpeta en /academic/students.</li>
+                    <li>Docentes: Lectura y escritura en /academic/courses y su carpeta en /academic/faculty.</li>
+                    <li>Administración: Lectura y escritura en /administration.</li>
+                    <li>Implementar un sistema de autenticación para controlar el acceso según los roles definidos (estudiante, docente, administrativo).</li>
+                    <li>Establecer monitoreo de acceso para detectar y registrar intentos de acceso no autorizados, especialmente en los directorios de /administration.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Consideraciones de Almacenamiento</h2>
+            <button class="toggle-btn" id="toggleStorage">Mostrar/Ocultar</button>
+            <div class="content" id="storageContent">
+                <ul>
+                    <li>Implementar un sistema de almacenamiento en red (NAS) para permitir el acceso seguro y eficiente desde diferentes ubicaciones dentro del campus.</li>
+                    <li>Dividir los datos en discos duros separados para /academic y /administration, permitiendo un balanceo de carga y redundancia en caso de fallo.</li>
+                </ul>
+            </div>
+        </div>
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
