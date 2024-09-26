@@ -15,48 +15,41 @@
 
         <h2>Estructura de Directorios <button id="toggleDirectories">Mostrar/Ocultar</button></h2>
         <pre id="directories">
-/institucion
-    /academica
-        /docentes
-            /profesor1
-        /estudiantes
-            /grupo1
-    /administracion
-        /recursos_humanos
-        /finanzas
-        </pre>
+o /academic: Directorio para toda la información académica.
+     ▪ /academic/courses: Almacena los planes de estudio y materiales de cada curso.
+     ▪ /academic/courses/math101: Planes de estudio y materiales del curso Math 101.
+     ▪ /academic/courses/chemistry202: Planes de estudio y materiales del curso Chemistry 202.
+     ▪ /academic/students: Contiene carpetas individuales para cada estudiante.
+     ▪ /academic/students/2023: Año de ingreso.
+     ▪ /academic/students/2023/juan_perez: Documentos personales de Juan Pérez, estudiante del 2023.
+     ▪ /academic/students/2023/maria_lopez: Documentos personales de María López, estudiante del 2023.
+     ▪ /academic/students/2024: Año de ingreso.
+     ▪ /academic/faculty: Almacena la información de los docentes.  
+     ▪ /academic/faculty/jane_doe: Carpeta personal de la profesora Jane Doe.
+     ▪ /academic/faculty/john_smith: Carpeta personal del profesor John Smith.
 
         <h2>Asignación de Permisos <button id="togglePermissions">Mostrar/Ocultar</button></h2>
         <ul id="permissions">
-            <li><strong>Docentes:</strong> Permisos completos en su propio directorio y permisos de solo lectura en los directorios de los estudiantes.</li>
-            <li><strong>Estudiantes:</strong> Pueden escribir en los directorios de sus cursos y leer materiales proporcionados por los docentes.</li>
-            <li><strong>Administración:</strong> Tiene acceso exclusivo a las carpetas administrativas.</li>
+      o	Utilizar EXT4 o NTFS según el sistema operativo del servidor, para soportar una gestión eficiente de archivos y permisos.
+      o	Implementar un sistema de copia de seguridad automatizado, especialmente para los directorios /academic y /administration, dado el valor crítico de esta información.
+      o	Implementar cifrado en los directorios /administration/finance y /academic/students para proteger datos sensibles.
         </ul>
 
-        <h3>Ejemplo de Código Python <button id="toggleCode">Mostrar/Ocultar</button></h3>
+        <h3> Gestión de Permisos y Seguridad<button id="toggleCode">Mostrar/Ocultar</button></h3>
         <div class="code" id="codeBlock">
-            <pre>
-import os
-import stat
-
-# Crear directorios
-os.makedirs("/institucion/academica/docentes/profesor1")
-os.makedirs("/institucion/academica/estudiantes/grupo1")
-
-# Asignar permisos
-os.chmod("/institucion/academica/docentes/profesor1", stat.S_IRWXU)
-os.chmod("/institucion/academica/estudiantes/grupo1", stat.S_IRWXU | stat.S_IRGRP)
-
-print("Estructura de archivos creada y permisos asignados.")
-            </pre>
+          Establecer permisos de lectura y escritura específicos:
+     ▪ Estudiantes: Solo lectura en /academic/courses y acceso a su propia carpeta en /academic/students.
+     ▪ Docentes: Lectura y escritura en /academic/courses y su carpeta en /academic/faculty.
+     ▪ Administración: Lectura y escritura en /administration.
+     ▪ Implementar un sistema de autenticación para controlar el acceso según los roles definidos (estudiante, docente, administrativo).
+     ▪ Establecer monitoreo de acceso para detectar y registrar intentos de acceso no autorizados, especialmente en los directorios de /administration. 
         </div>
 
-        <h2>Ventajas del Sistema de Archivos</h2>
-        <p>Este sistema permite:</p>
+        <h2>Consideraciones de Almacenamiento:</h2>
         <ul>
-            <li>Organización eficiente de documentos académicos y administrativos.</li>
-            <li>Control detallado de los accesos a la información.</li>
-            <li>Escalabilidad para gestionar grandes volúmenes de datos en el tiempo.</li>
+            Implementar un sistema de almacenamiento en red (NAS) para permitir el acceso seguro y eficiente desde diferentes ubicaciones dentro del campus. 
+            Dividir los datos en discos duros separados para /academic y /administration, permitiendo un balanceo de carga y redundancia en caso de fallo.
+
         </ul>
     </div>
 </body>
