@@ -1,8 +1,63 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Archivos para Institución Educativa</title>
-   </head>
+    <link rel="stylesheet" href="index.css"> 
+    <script defer src="index.js"></script> 
+</head>
+<body>
+    <div class="container">
+        <h1>Sistema de Archivos para una Institución Educativa</h1>
+
+        <p>Este sistema de archivos está diseñado para organizar y gestionar la información académica y administrativa en una institución educativa. La estructura de archivos está dividida en tres áreas principales: <strong>Académica</strong>, <strong>Estudiantes</strong> y <strong>Administración</strong>.</p>
+
+        <h2>Estructura de Directorios <button id="toggleDirectories">Mostrar/Ocultar</button></h2>
+        <pre id="directories">
+/institucion
+    /academica
+        /docentes
+            /profesor1
+        /estudiantes
+            /grupo1
+    /administracion
+        /recursos_humanos
+        /finanzas
+        </pre>
+
+        <h2>Asignación de Permisos <button id="togglePermissions">Mostrar/Ocultar</button></h2>
+        <ul id="permissions">
+            <li><strong>Docentes:</strong> Permisos completos en su propio directorio y permisos de solo lectura en los directorios de los estudiantes.</li>
+            <li><strong>Estudiantes:</strong> Pueden escribir en los directorios de sus cursos y leer materiales proporcionados por los docentes.</li>
+            <li><strong>Administración:</strong> Tiene acceso exclusivo a las carpetas administrativas.</li>
+        </ul>
+
+        <h3>Ejemplo de Código Python <button id="toggleCode">Mostrar/Ocultar</button></h3>
+        <div class="code" id="codeBlock">
+            <pre>
+import os
+import stat
+
+# Crear directorios
+os.makedirs("/institucion/academica/docentes/profesor1")
+os.makedirs("/institucion/academica/estudiantes/grupo1")
+
+# Asignar permisos
+os.chmod("/institucion/academica/docentes/profesor1", stat.S_IRWXU)
+os.chmod("/institucion/academica/estudiantes/grupo1", stat.S_IRWXU | stat.S_IRGRP)
+
+print("Estructura de archivos creada y permisos asignados.")
+            </pre>
+        </div>
+
+        <h2>Ventajas del Sistema de Archivos</h2>
+        <p>Este sistema permite:</p>
+        <ul>
+            <li>Organización eficiente de documentos académicos y administrativos.</li>
+            <li>Control detallado de los accesos a la información.</li>
+            <li>Escalabilidad para gestionar grandes volúmenes de datos en el tiempo.</li>
+        </ul>
+    </div>
+</body>
+</html>
